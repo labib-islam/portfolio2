@@ -1,0 +1,202 @@
+.page__container {
+  min-height: 100vh;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-page-background);
+}
+
+.page-landing {
+  margin: 80px 20px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.landingpage-left__container {
+  width: 50%;
+  /* background-color: rgb(218, 133, 133); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+
+
+.landingpage-right__container {
+  width: 30%;
+  /* background-color: rgb(123, 182, 111); */
+  display: flex;
+  margin-left: -200px;
+  align-items: center;
+  z-index: 9;
+}
+
+.landingpage-left__container h4 {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+.landingpage-left__container h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.landingpage-left__container h1 span {
+  color: var(--primary-cyan);
+  display: inline-block;
+}
+
+.landingpage-left__container h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #4e4e4e;
+}
+
+.links__container {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-logo__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgb(148, 148, 148);
+  cursor: pointer;
+}
+
+.social-logo__container:hover {
+  border: 1px solid rgba(29, 29, 29, 0);
+}
+
+.social-logo__container .logo {
+  fill: #3a3a3a;
+}
+
+.social-logo__container .logo-box {
+  fill: var(--primary-page-background);
+}
+
+.social-logo__container:hover .facebook-logo {
+  fill: rgb(255, 255, 255, .9);
+}
+
+.social-logo__container:hover .facebook-logo-box {
+  fill: rgb(24, 118, 242, .9);
+}
+
+.social-logo__container:hover .linkedin-logo {
+  fill: rgb(255, 255, 255, .9);
+}
+
+.social-logo__container:hover .linkedin-logo-box {
+  fill: rgba(0, 119, 181, .9)
+}
+
+.social-logo__container:hover .github-logo {
+  fill: rgb(255, 255, 255, .9);
+}
+
+.social-logo__container:hover .github-logo-box {
+  fill: rgb(23, 21, 21, .9);
+}
+
+.logo-icon {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.04); /* Slight zoom */
+}
+
+.cv__container {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0rem .5rem;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(6, 173, 179);
+  cursor: pointer;
+}
+
+.cv__container:hover {
+  border: 1px solid rgba(6, 173, 179, 0);
+  background-color: rgb(6, 173, 179);
+}
+
+.cv__container:hover .new-tab-icon {
+  fill:  rgb(236, 236, 236);
+}
+
+.cv__container:hover span {
+  color:  rgb(236, 236, 236);
+}
+
+.new-tab-logo__container {
+  width: 18px;
+  height: 18px;
+}
+
+.new-tab-icon {
+  fill: #3a3a3a;
+}
+
+.cv__container span {
+  font-family: "montserrat";
+  font-size: .7rem;
+  font-weight: 600;
+  color: #3a3a3a;
+}
+
+@media (max-width: 1440px) {
+  .landingpage-left__container {
+    width: 65%;
+  }
+  
+  .landingpage-right__container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1024px) {
+  
+  .landingpage-right__container {
+    width: 45%;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .page-landing {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .landingpage-left__container {
+    width: auto;
+  }
+
+  .landingpage-left__container h1 {
+    font-size: 3.5rem;
+  }
+
+  .landingpage-left__container h3 {
+    font-size: 1.2rem;
+  }
+  
+  .landingpage-right__container {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 ;
+  }
+}
