@@ -69,10 +69,14 @@
 }
 
 .card-link__container .logo-item {
+  width: 100%;
+  height: 100%;
   transform: scale(1.1);
 }
 
 .card-link__container .icon-item {
+  width: 100%;
+  height: 100%;
   transform: scale(.7);
 }
 

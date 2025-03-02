@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import LandingPageImage from "../../assets/LandingPage/home-image.svg?react";
 import FacebookLogo from "../../assets/socials/facebook-logo.svg?react";
 import LinkedinLogo from "../../assets/socials/linkedin-logo.svg?react";
 import GithubLogo from "../../assets/socials/github-logo.svg?react";
@@ -10,6 +9,7 @@ import { Link } from "react-router";
 
 const LandingPage = () => {
   const [data, setData] = useState();
+  const [imageData, setImageData] = useState();
 
   const fetchData = async () => {
     try {
@@ -23,8 +23,22 @@ const LandingPage = () => {
     }
   };
 
+  const fetchImageData = async () => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_SHEET_LINK}/Images`
+      );
+      const data = await res.json();
+      setImageData(data[0]);
+      console.log(data[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetchData();
+    fetchImageData();
   }, []);
 
   const socialList = [
@@ -70,7 +84,8 @@ const LandingPage = () => {
           )}
         </div>
         <div className="landingpage-right__container">
-          <LandingPageImage />
+          {/* <LandingPageImage /> */}
+          {imageData && <img src={imageData.Avatar} alt="" />}
         </div>
       </div>
     </div>

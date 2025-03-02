@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import ErrorIcon from "../../assets/icons/error-icon.svg?react";
 
+import "./SendMessage.css";
+
 const SendMessage = () => {
   const [inputs, setInputs] = useState({
     Name: "",
     Email: "",
     Message: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
 
   const [error, setError] = useState({});
 
@@ -39,9 +44,9 @@ const SendMessage = () => {
       setError(errors);
       return;
     }
-    console.log("passed");
 
     try {
+      setIsLoading(true);
       const now = new Date();
       const bangladeshTime = now.toLocaleString("en-US", {
         timeZone: "Asia/Dhaka",
@@ -70,71 +75,103 @@ const SendMessage = () => {
         }
       );
       const data = await res.text();
-      console.log(data);
+      setResponseMessage(data);
+
+      // Reset Input values
+      setInputs({
+        Name: "",
+        Email: "",
+        Message: "",
+      });
+
+      setIsLoading(false);
+
+      // Hide response message after 3 seconds
+      setTimeout(() => {
+        setResponseMessage("");
+      }, 3000);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <form className="send-message__form">
-      <div className="input__container">
-        <input
-          className={error.Name ? "error-box" : ""}
-          type="text"
-          placeholder="Name"
-          name="Name"
-          onChange={handleChange}
-        />
-        <div
-          className={`error__container ${error.Name ? "active" : "inactive"}`}
-        >
-          <div className="error-icon__container">
-            <ErrorIcon className="error-icon" />
-          </div>
-          <span>{error.Name && error.Name}</span>
+    <>
+      {isLoading ? (
+        <span className="loader" />
+      ) : responseMessage ? (
+        <div className="response-message__container">
+          <span className="check" />
+          <span className="response-message">{responseMessage}</span>
         </div>
-      </div>
-      <div className="input__container">
-        <input
-          className={error.Email ? "error-box" : ""}
-          type="email"
-          placeholder="Email"
-          name="Email"
-          onChange={handleChange}
-        />
-        <div
-          className={`error__container ${error.Email ? "active" : "inactive"}`}
-        >
-          <div className="error-icon__container">
-            <ErrorIcon className="error-icon" />
+      ) : (
+        <form className="send-message__form">
+          <div className="input__container">
+            <input
+              className={error.Name ? "error-box" : ""}
+              type="text"
+              placeholder="Name"
+              name="Name"
+              value={inputs.Name}
+              onChange={handleChange}
+            />
+            <div
+              className={`error__container ${
+                error.Name ? "active" : "inactive"
+              }`}
+            >
+              <div className="error-icon__container">
+                <ErrorIcon className="error-icon" />
+              </div>
+              <span>{error.Name && error.Name}</span>
+            </div>
           </div>
-          <span>{error.Email && error.Email}</span>
-        </div>
-      </div>
-      <div className="input__container text-area">
-        <textarea
-          className={error.Message ? "error-box" : ""}
-          id=""
-          rows={5}
-          placeholder="Message"
-          name="Message"
-          onChange={handleChange}
-        />
-        <div
-          className={`error__container  ${
-            error.Message ? "active" : "inactive"
-          }`}
-        >
-          <div className="error-icon__container">
-            <ErrorIcon className="error-icon" />
+          <div className="input__container">
+            <input
+              className={error.Email ? "error-box" : ""}
+              type="email"
+              placeholder="Email"
+              name="Email"
+              value={inputs.Email}
+              onChange={handleChange}
+            />
+            <div
+              className={`error__container ${
+                error.Email ? "active" : "inactive"
+              }`}
+            >
+              <div className="error-icon__container">
+                <ErrorIcon className="error-icon" />
+              </div>
+              <span>{error.Email && error.Email}</span>
+            </div>
           </div>
-          <span>{error.Message && error.Message}</span>
-        </div>
-      </div>
+          <div className="input__container text-area">
+            <textarea
+              className={error.Message ? "error-box" : ""}
+              id=""
+              rows={5}
+              placeholder="Message"
+              name="Message"
+              value={inputs.Message}
+              onChange={handleChange}
+            />
+            <div
+              className={`error__container  ${
+                error.Message ? "active" : "inactive"
+              }`}
+            >
+              <div className="error-icon__container">
+                <ErrorIcon className="error-icon" />
+              </div>
+              <span>{error.Message && error.Message}</span>
+            </div>
+          </div>
 
-      <button onClick={handleSubmit}>Send A Message</button>
-    </form>
+          <button onClick={handleSubmit}>Send A Message</button>
+        </form>
+      )}
+    </>
   );
 };
 

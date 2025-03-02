@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ProfileImage from "../../assets/about-me/about-image.png";
 
 import "./AboutMe.css";
 
@@ -24,18 +23,20 @@ export const AboutMe = () => {
 
   return (
     <div id="aboutme" className="page__container test">
-      <div className="page-aboutme">
-        <div className="aboutmepage-left__container">
-          <div className="aboutmepage-image__container">
-            <img src={ProfileImage} alt="" />
+      {data && (
+        <div className="page-aboutme">
+          <div className="aboutmepage-left__container">
+            <div className="aboutmepage-image__container">
+              <img src={data.Profile} alt="" />
+            </div>
+          </div>
+          <div className="aboutmepage-right__container">
+            <h1>About Me</h1>
+            <hr className="h-line" />
+            <p>{data.aboutMe}</p>
           </div>
         </div>
-        <div className="aboutmepage-right__container">
-          <h1>About Me</h1>
-          <hr className="h-line" />
-          {data && <p>{data.aboutMe}</p>}
-        </div>
-      </div>
+      )}
     </div>
   );
 };

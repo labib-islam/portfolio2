@@ -92,7 +92,7 @@ const Contact = () => {
                 </div>
               )}
             </div>
-            <div className="contact-card__container">
+            <div className="contact-card__container center">
               <SendMessage />
             </div>
           </div>

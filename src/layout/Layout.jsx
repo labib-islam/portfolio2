@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
-import DownArrow from "../assets/icons/down-arrow.svg?react";
+import DownArrow from "../assets/icons/down-arrow-01-01.svg?react";
 
 import "./Layout.css";
 
@@ -62,7 +62,7 @@ const Layout = () => {
             onClick={dropdownStatusHandler}
             ref={dropdownRef}
           >
-            <DownArrow />
+            <DownArrow className="down-arrow-icon" />
           </div>
           <div
             className={`right-navigation-items__container ${dropdownStatus}`}

@@ -39,6 +39,12 @@ ul {
   font-weight: bold;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1024px) {
   h1 {
     font-size: 1.7rem;
