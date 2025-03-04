@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
-import DownArrow from "../assets/icons/down-arrow-01-01.svg?react";
+import DownArrow from "../assets/icons/down-arrow.svg?react";
+import UpArrow from "../assets/icons/up-arrow.svg?react";
 
 import "./Layout.css";
 
@@ -48,10 +49,14 @@ const Layout = () => {
               className="name-link"
               spy={true}
               smooth={true}
+              ignoreCancelEvents={true}
               duration={500}
               offset={0}
             >
-              Labib Islam
+              {/* <div className="up-arrow__container">
+                <UpArrow className="up-arrow" />
+              </div> */}
+              <span className="name">Labib Islam</span>
             </Link>
           </div>
         </div>
